@@ -37,7 +37,7 @@ To run the program, simply type:
 python3 main.py
 ```
 
-Two terse `Success` or verbose `Error` messages will show depending on the responses that `upload()` or `reference()` gets.
+Two terse `Success` or verbose `Error` messages will show depending on the responses that `upload()` or `reference()` receives from the Twitter API.
 
 To run this on a schedule, you can use something like cron or launchd. Since I'm on a Mac, I opted for [launchd](https://www.launchd.info/):
 ```
