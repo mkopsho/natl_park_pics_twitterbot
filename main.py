@@ -27,6 +27,7 @@ def download():
   if image_response.status_code == 200:
       with open("IMAGE_PATH", 'wb') as f:
         f.write(image_response.content)
+        f.close()
         upload()
 
 # Tweet it
