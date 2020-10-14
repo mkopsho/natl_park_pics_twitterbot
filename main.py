@@ -4,7 +4,7 @@ import random
 import os
 
 # Set API vars
-twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
+twitter_api = TwitterAPI(api_key, api_secret, access_token_key, access_token_secret)
 nps_url = 'https://developer.nps.gov/api/v1/parks?api_key=[YOUR_API_KEY]&limit=500'
 
 # Get random park dict:

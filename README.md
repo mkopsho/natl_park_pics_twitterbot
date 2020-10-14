@@ -17,7 +17,7 @@ pip install -r requirements.txt
 To use the Twitter API, you'll need to apply for [access](https://developer.twitter.com/en/apply-for-access). Once that's granted, you'll be able to see an `API key` and `API secret` as well as generate an `access token` and `access secret`. Copy those and replace these placeholders with them:
 ```
 main.py:7:
-twitter_api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
+twitter_api = TwitterAPI(api_key, api_secret, access_token_key, access_token_secret)
 ```
 
 ### NPS API Key
@@ -29,17 +29,17 @@ main.py:8:
 nps_url = 'https://developer.nps.gov/api/v1/parks?api_key=[YOUR_API_KEY]&limit=500'
 ```
 
-Also, be sure to change `IMAGE_PATH` on lines `28` and `35` with the path that you want your random park image to save to.
+Additionally be sure to change the `IMAGE_PATH` placeholder on lines `28` and `35` with the path that you want your random park image to save to. This will be overwritten with subsequent runs of the program.
 
 # Running and Scheduling
-To run the program, simply:
+To run the program, simply type:
 ```
 python3 main.py
 ```
 
-Two brief `Success` or verbose `Error` messages will show depending on the responses that `upload()` or `reference()` gets.
+Two terse `Success` or verbose `Error` messages will show depending on the responses that `upload()` or `reference()` gets.
 
-To schedule, you can use something like cron or launchd. Sine I'm on a Mac, I opted for launchd:
+To run this on a schedule, you can use something like cron or launchd. Since I'm on a Mac, I opted for [launchd](https://www.launchd.info/):
 ```
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -53,12 +53,14 @@ To schedule, you can use something like cron or launchd. Sine I'm on a Mac, I op
     </array>
     <key>StartInterval</key>
     <integer>7200</integer>
+
     <key>StandardOutPath</key>
     <string>/Users/michaelkopsho/out.log</string>
+
     <key>StandardErrorPath</key>
     <string>/Users/michaelkopsho/error.log</string>
 </dict>
 </plist>
 ```
 
-As you can see, I post a new pic every 2 hours.
+As you can see, I post a new pic every 2 hours. I also log stdout and stderrors to some logfiles in case I need them to debug.
