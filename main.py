@@ -19,8 +19,11 @@ def download():
   park_stats["website"] = park_obj["url"]
 
   # Get random image from `images` list within park dict:
-  image_list = park_obj["images"]
-  image = park_obj["images"][random.randint(0, len(image_list) - 1)]["url"]
+  if park_obj["images"]:
+    image_list = park_obj["images"]
+    image = park_obj["images"][random.randint(0, len(image_list) - 1)]["url"]
+  else:
+    download()
 
   # Download image
   image_response = requests.get(image)
@@ -29,6 +32,8 @@ def download():
       f.write(image_response.content)
       f.close()
       upload()
+  else:
+    download()
 
 # Tweet it
 ## Upload image
