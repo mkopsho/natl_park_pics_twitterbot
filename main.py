@@ -21,7 +21,7 @@ def download():
   # Get random image from `images` list within park dict:
   if park_obj["images"]:
     image_list = park_obj["images"]
-    image = park_obj["images"][random.randint(0, len(image_list) - 1)]["url"]
+    image = image_list[random.randint(0, len(image_list) - 1)]["url"]
   else:
     download()
 
